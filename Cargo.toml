@@ -1,0 +1,20 @@
+[package]
+name = "type-handle"
+version = "0.1.0"
+edition = "2021"
+description = "Regular and reference-counted type handles"
+authors = ["zeozeozeo"]
+documentation = "https://docs.rs/type-handle"
+homepage = "https://github.com/zeozeozeo/type-handle"
+readme = "README.md"
+license = "Unlicense"
+keywords = ["handle", "rchandle", "reference-counting", "type-handle"]
+categories = ["memory-management", "rust-patterns"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["send_sync"]
+send_sync = []
+
+[dependencies]
