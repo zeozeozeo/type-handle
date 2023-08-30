@@ -10,6 +10,7 @@ unsafe fn transmute_ref<FromT, ToT>(from: &FromT) -> &ToT {
 }
 
 /// Convert any mutable reference into any other.
+#[inline]
 pub(crate) unsafe fn transmute_ref_mut<FromT, ToT>(from: &mut FromT) -> &mut ToT {
     debug_assert_eq!(mem::size_of::<FromT>(), mem::size_of::<ToT>());
     &mut *(from as *mut FromT as *mut ToT)
