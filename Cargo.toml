@@ -1,6 +1,6 @@
 [package]
 name = "type-handle"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Regular and reference-counted type handles"
 authors = ["zeozeozeo"]

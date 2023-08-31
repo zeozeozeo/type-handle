@@ -186,6 +186,15 @@ impl<T> RCHandle<T> {
         unsafe { transmute_ref(t) }
     }
 
+    /// Create a reference counted handle from a mutable reference.
+    ///
+    /// Takes ownership of the referenced object.
+    #[inline]
+    pub fn from_ref(t: &mut T) -> Self {
+        // references cannot be null, so it's safe to call unwrap_unchecked() here
+        unsafe { Self::from_ptr(t).unwrap_unchecked() }
+    }
+
     /// Returns the pointer to the handle.
     #[inline]
     pub fn as_ptr(&self) -> &ptr::NonNull<T> {
@@ -293,6 +302,10 @@ mod tests {
             let new_num = num * 6;
             rch.number = new_num;
             assert!(rch.number == new_num);
+
+            let mut rch = RCHandle::from_ref(&mut thing);
+            rch.number = 11;
+            assert!(rch.number == 11);
         }
     }
 }
